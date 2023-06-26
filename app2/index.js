@@ -2,12 +2,15 @@ const express = require('express');
 const kafka = require('kafka-node');
 const app = express();
 const mongoose = require('mongoose')
-
+require('dotenv').config()
 
 app.use(express.json());
 
 const dbRunning = async ()=>{
-    mongoose.connect(process.env.MONGO_URL)
+    mongoose.connect(process.env.MONGO_URL,{
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+      });
     const User = new mongoose.model('user',{
         name: String,
         email: String,
