@@ -9,7 +9,10 @@ app.use(express.json());
 const dbRunning =async ()=>{
 
 
-const db = new sequelize(process.env.POSTGRES_URL)
+const db = new sequelize(process.env.POSTGRES_DB,process.env.POSTGRES_USER,process.env.POSTGRES_PASSWORD,{
+    host: localhost,
+    dialect: 'postgres'
+})
 const User = db.define('user',{
     name: sequelize.name,
     email: sequelize.email,
